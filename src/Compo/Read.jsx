@@ -7,7 +7,7 @@ const Read = () => {
     const [rowid, setstateid] = useState()
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [edit, setedit] = useState({})
-    const [search , setsearch] = useState()
+    const [search, setsearch] = useState()
 
     const handleOk = () => {
         setIsModalVisible(false);
@@ -49,53 +49,31 @@ const Read = () => {
         setstateid(id)
 
     }
- 
+
     // console.log(edit.fname)
 
-   
-    // const datasearch = () => {
-    //      search.filter((data)=>{
-    //         if(search === "")
-    //         {
-    //             return data;
 
-    //         }else if 
-    //         (data.fname.toLowerCase().includes(search.tolowerCase()))
-    //         {
-    //         return data; 
-    //         }
-    //      })
-    //      search.map((data)=>{
-    //             return <>
-    //              <h2>{data.fname}</h2>
-    //             </>
-    //      })
-    // }
-    // console.log(search)
-
-    function datasearch (e)  {
+    function datasearch(e) {
         e.preventDefault();
-        setRows(rows.filter((ele)=>{
-            if(
-                ele.fname.toLowerCase() === search.toLowerCase() || ele.lname.toLowerCase() === search.toLowerCase() || ele.email.toLowerCase() === search.toLowerCase() 
-            )
-            {
+        setRows(rows.filter((ele) => {
+            if (
+                ele.fname.toLowerCase() === search.toLowerCase() || ele.lname.toLowerCase() === search.toLowerCase() || ele.email.toLowerCase() === search.toLowerCase()
+            ) {
                 console.log(ele)
-                return ele ;
+                return ele;
             }
         }))
     }
-    
+
     return (
         <>
             <div>
-                <b><button onClick={datasearch} style={{marginLeft:"500px"}} htmlFor="">Search</button></b><input  onChange={(event)=>setsearch(event.target.value)} style={{border:"2px solid black"}} type="search" placeholder='get-data' />
-                
+                <div className="search-menu">
+                <b><button className='btn-dark mx-3' id="blue-btn" onClick={datasearch}>Search</button></b>
 
-
-
-
-                <h1>Show Data</h1>
+                <input className='form-control' id='search-box' onChange={(event) => setsearch(event.target.value)} style={{ border: "2px solid black" }} type="search" placeholder='search-details' />
+                </div>
+                <h3 className='text-center mt-5'><marquee>SHOW DATA</marquee></h3>
                 <div className="container-fluid">
                     <table className="table table-dark table-striped">
                         <thead>
@@ -133,7 +111,7 @@ const Read = () => {
                     </table>
                 </div>
             </div>
-            
+
             <Modal title="Update Box" visible={isModalVisible} onOk={handleOk}>
                 <label>FirstName</label><Input onChange={handlechagne} value={edit.fname} name='fname' size="large" />
                 <label>LastName</label><Input onChange={handlechagne} value={edit.lname} name='lname' size="large" />
