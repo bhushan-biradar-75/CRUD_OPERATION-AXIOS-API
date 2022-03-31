@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Modal, Button, Input } from 'antd';
+import { Modal , Input } from 'antd';
+
 
 const Read = () => {
     const [rows, setRows] = useState([])
@@ -34,23 +35,20 @@ const Read = () => {
 
 
     const del = (id) => {
+
         axios.delete(`https://6206272f92dd6600171c0867.mockapi.io/crud-operation/${id}`)
             .then(res => {
                 console.log(res);
+                alert("detail deleted")
             })
     }
 
     const handleedit = (id, ele) => {
         setIsModalVisible(true);
-        // console.log(id)
-        // console.log(ele)
-        // console.log(edit)
         setedit(ele)
         setstateid(id)
 
     }
-
-    // console.log(edit.fname)
 
 
     function datasearch(e) {
